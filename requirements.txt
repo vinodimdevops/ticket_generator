@@ -1,0 +1,4 @@
+Flask==2.3.2
+qrcode==7.3
+reportlab==3.6.13
+

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Ticket for Longford Diwali</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #5c5c5c;
+            text-align: center;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #5cb85c;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        .success-message {
+            color: #5cb85c;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function disableButton(button) {
+            button.disabled = true;  // Disable the button
+            button.innerText = "Processing..."; // Change button text
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Generate Ticket for Longford Diwali</h1>
+        
+        <!-- Success message display -->
+        {% if success %}
+            <div class="success-message">Ticket Generated and Emailed Successfully!</div>
+        {% endif %}
+
+        <form method="POST" action="/generate_ticket" onsubmit="disableButton(this.submitButton);">
+            <label for="name">Customer Name:</label>
+            <input type="text" name="name" required>
+
+            <label for="address">Address:</label>
+            <input type="text" name="address" required>
+
+            <label for="contact">Contact Number:</label>
+            <input type="text" name="contact" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" required>
+
+            <label for="adults">Number of Adults:</label>
+            <input type="number" name="adults" required>
+
+            <label for="children_below_3">Number of Children (0-3):</label>
+            <input type="number" name="children_below_3" required>
+
+            <label for="children_above_3">Number of Children Above 3 Years:</label>
+            <input type="number" name="children_above_3" required>
+
+            <button type="submit" name="submitButton">Generate Ticket</button>
+        </form>
+	<a href="{{ url_for('logout') }}">Logout</a>  <!-- Logout Link -->
+    </div>
+</body>
+</html>
+
